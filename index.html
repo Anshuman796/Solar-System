@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Interactive Live Solar System Explorer created by Anshuman Singh">
+
+  <title>Solar System Explorer | Anshuman Singh</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="navbar">
+
+    <div class="logo">
+      <span class="logo-icon">☀</span>
+      <div>
+        <strong>Solar<span>Verse</span></strong>
+        <small>by Anshuman Singh</small>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#system">Solar System</a>
+      <a href="#planets">Planets</a>
+      <a href="#facts">Facts</a>
+    </nav>
+
+    <button id="menuBtn" class="menu-btn">☰</button>
+
+  </header>
+  <section id="home" class="hero">
+
+    <div class="hero-content">
+
+      <span class="badge">🚀 INTERACTIVE SPACE EXPERIENCE</span>
+
+      <h1>
+        Explore The
+        <span>Solar System</span>
+      </h1>
+
+      <p>
+        Welcome to an interactive journey through our cosmic neighborhood.
+        Explore planets, orbits, moons, temperatures, gravity and fascinating
+        astronomical facts.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#system" class="primary-btn">
+          🚀 Explore Solar System
+        </a>
+
+        <a href="#planets" class="secondary-btn">
+          🪐 View Planets
+        </a>
+      </div>
+
+      <div class="creator">
+        <div class="creator-avatar">AS</div>
+
+        <div>
+          <span>Created by</span>
+          <strong>Anshuman Singh</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-orbit">
+
+      <div class="hero-sun"></div>
+
+      <div class="hero-orbit-line orbit-one"></div>
+      <div class="hero-orbit-line orbit-two"></div>
+      <div class="hero-orbit-line orbit-three"></div>
+
+      <div class="floating-planet planet-a">🌍</div>
+      <div class="floating-planet planet-b">🪐</div>
+
+    </div>
+
+  </section>
+
+  <section id="system" class="system-section">
+
+    <div class="section-heading">
+
+      <span>LIVE SIMULATION</span>
+
+      <h2>Our Solar System</h2>
+
+      <p>
+        Watch the planets orbit around the Sun in real time.
+        Select any planet to learn more.
+      </p>
+
+    </div>
+
+
+    <!-- Controls -->
+
+    <div class="controls">
+
+      <button id="pauseBtn" class="control-btn">
+        ⏸ Pause
+      </button>
+
+      <button id="resetBtn" class="control-btn">
+        ↻ Reset
+      </button>
+
+      <label class="speed-control">
+        Speed
+        <input
+          id="speedRange"
+          type="range"
+          min="0"
+          max="5"
+          value="1"
+          step="0.1"
+        >
+        <span id="speedValue">1x</span>
+      </label>
+
+    </div>
+
+
+    <!-- Solar System -->
+
+    <div class="solar-wrapper">
+
+      <div id="solarSystem" class="solar-system">
+
+        <!-- SUN -->
+        <div class="sun"
+             data-planet="Sun"
+             tabindex="0">
+          <span>☀</span>
+        </div>
+
+
+        <!-- ORBITS -->
+
+        <div class="orbit orbit-mercury"></div>
+        <div class="orbit orbit-venus"></div>
+        <div class="orbit orbit-earth"></div>
+        <div class="orbit orbit-mars"></div>
+        <div class="orbit orbit-jupiter"></div>
+        <div class="orbit orbit-saturn"></div>
+        <div class="orbit orbit-uranus"></div>
+        <div class="orbit orbit-neptune"></div>
+
+
+        <!-- PLANETS -->
+
+        <button class="planet mercury"
+                data-planet="Mercury"
+                aria-label="Mercury">
+        </button>
+
+        <button class="planet venus"
+                data-planet="Venus"
+                aria-label="Venus">
+        </button>
+
+        <button class="planet earth"
+                data-planet="Earth"
+                aria-label="Earth">
+        </button>
+
+        <button class="planet mars"
+                data-planet="Mars"
+                aria-label="Mars">
+        </button>
+
+        <button class="planet jupiter"
+                data-planet="Jupiter"
+                aria-label="Jupiter">
+        </button>
+
+        <button class="planet saturn"
+                data-planet="Saturn"
+                aria-label="Saturn">
+        </button>
+
+        <button class="planet uranus"
+                data-planet="Uranus"
+                aria-label="Uranus">
+        </button>
+
+        <button class="planet neptune"
+                data-planet="Neptune"
+                aria-label="Neptune">
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Selected Planet -->
+
+    <div id="planetInfo" class="planet-info">
+
+      <div class="info-header">
+
+        <div>
+          <span id="planetType">STAR</span>
+          <h2 id="planetName">The Sun</h2>
+        </div>
+
+        <div id="planetEmoji" class="planet-emoji">☀️</div>
+
+      </div>
+
+      <p id="planetDescription">
+        The Sun is the star at the center of our Solar System.
+        It contains most of the mass of the Solar System and provides
+        the energy that powers life on Earth.
+      </p>
+
+      <div class="planet-stats">
+
+        <div>
+          <span>Diameter</span>
+          <strong id="diameter">1,392,700 km</strong>
+        </div>
+
+        <div>
+          <span>Mass</span>
+          <strong id="mass">1.989 × 10³⁰ kg</strong>
+        </div>
+
+        <div>
+          <span>Gravity</span>
+          <strong id="gravity">274 m/s²</strong>
+        </div>
+
+        <div>
+          <span>Distance</span>
+          <strong id="distance">0 km</strong>
+        </div>
+
+        <div>
+          <span>Day Length</span>
+          <strong id="day">~25 days</strong>
+        </div>
+
+        <div>
+          <span>Year Length</span>
+          <strong id="year">—</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= PLANETS ================= -->
+
+  <section id="planets" class="planets-section">
+
+    <div class="section-heading">
+
+      <span>CELESTIAL BODIES</span>
+
+      <h2>Meet The Planets</h2>
+
+      <p>
+        Eight planets orbit our Sun, each with its own unique
+        characteristics.
+      </p>
+
+    </div>
+
+
+    <div class="planet-grid">
+
+
+      <!-- MERCURY -->
+
+      <article class="planet-card mercury-card">
+
+        <div class="card-planet mercury-preview"></div>
+
+        <span class="planet-number">01</span>
+
+        <h3>Mercury</h3>
+
+        <span class="planet-type">TERRESTRIAL PLANET</span>
+
+        <p>
+          The smallest planet and the closest planet to the Sun.
+          Mercury has extreme temperature differences between day and night.
+        </p>
+
+        <div class="mini-stats">
+          <span>☀ 57.9M km</span>
+          <span>📅 88 days</span>
+        </div>
+
+      </article>
+
+
+      <!-- VENUS -->
+
+      <article class="planet-card venus-card">
+
+        <div class="card-planet venus-preview"></div>
+
+        <span class="planet-number">02</span>
+
+        <h3>Venus</h3>
+
+        <span class="planet-type">TERRESTRIAL PLANET</span>
+
+        <p>
+          Venus is the hottest planet in the Solar System,
+          with a thick carbon dioxide atmosphere.
+        </p>
+
+        <div class="mini-stats">
+          <span>☀ 108.2M km</span>
+          <span>📅 225 days</span>
+        </div>
+
+      </article>
+
+
+      <!-- EARTH -->
+
+      <article class="planet-card earth-card">
+
+        <div class="card-planet earth-preview"></div>
+
+        <span class="planet-number">03</span>
+
+        <h3>Earth</h3>
+
+        <span class="planet-type">TERRESTRIAL PLANET</span>
+
+        <p>
+          Our home planet and the only world currently known
+          to support life.
+        </p>
+
+        <div class="mini-stats">
+          <span>🌊 71% Water</span>
+          <span>📅 365.25 days</span>
+        </div>
+
+      </article>
+
+
+      <!-- MARS -->
+
+      <article class="planet-card mars-card">
+
+        <div class="card-planet mars-preview"></div>
+
+        <span class="planet-number">04</span>
+
+        <h3>Mars</h3>
+
+        <span class="planet-type">TERRESTRIAL PLANET</span>
+
+        <p>
+          Known as the Red Planet because iron minerals
+          in its soil give the surface its reddish color.
+        </p>
+
+        <div class="mini-stats">
+          <span>☀ 227.9M km</span>
+          <span>📅 687 days</span>
+        </div>
+
+      </article>
+
+
+      <!-- JUPITER -->
+
+      <article class="planet-card jupiter-card">
+
+        <div class="card-planet jupiter-preview"></div>
+
+        <span class="planet-number">05</span>
+
+        <h3>Jupiter</h3>
+
+        <span class="planet-type">GAS GIANT</span>
+
+        <p>
+          Jupiter is the largest planet and is famous for
+          its enormous storms, including the Great Red Spot.
+        </p>
+
+        <div class="mini-stats">
+          <span>☀ 778.5M km</span>
+          <span>📅 11.86 years</span>
+        </div>
+
+      </article>
+
+
+      <!-- SATURN -->
+
+      <article class="planet-card saturn-card">
+
+        <div class="card-planet saturn-preview">
+          <i></i>
+        </div>
+
+        <span class="planet-number">06</span>
+
+        <h3>Saturn</h3>
+
+        <span class="planet-type">GAS GIANT</span>
+
+        <p>
+          Saturn is famous for its spectacular ring system
+          made primarily of ice and rocky particles.
+        </p>
+
+        <div class="mini-stats">
+          <span>💍 Rings</span>
+          <span>📅 29.45 years</span>
+        </div>
+
+      </article>
+
+
+      <!-- URANUS -->
+
+      <article class="planet-card uranus-card">
+
+        <div class="card-planet uranus-preview"></div>
+
+        <span class="planet-number">07</span>
+
+        <h3>Uranus</h3>
+
+        <span class="planet-type">ICE GIANT</span>
+
+        <p>
+          Uranus rotates on its side, giving it an unusual
+          axial tilt of about 98 degrees.
+        </p>
+
+        <div class="mini-stats">
+          <span>🧊 Ice Giant</span>
+          <span>📅 84 years</span>
+        </div>
+
+      </article>
+
+
+      <!-- NEPTUNE -->
+
+      <article class="planet-card neptune-card">
+
+        <div class="card-planet neptune-preview"></div>
+
+        <span class="planet-number">08</span>
+
+        <h3>Neptune</h3>
+
+        <span class="planet-type">ICE GIANT</span>
+
+        <p>
+          Neptune is the farthest recognized planet from the Sun
+          and has extremely fast winds.
+        </p>
+
+        <div class="mini-stats">
+          <span>🌬 2,000 km/h</span>
+          <span>📅 164.8 years</span>
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <section id="facts" class="facts-section">
+
+    <div class="section-heading">
+
+      <span>DID YOU KNOW?</span>
+
+      <h2>Mind-Blowing Space Facts</h2>
+
+    </div>
+
+
+    <div class="facts-grid">
+
+      <div class="fact">
+        <strong>8</strong>
+        <span>Recognized planets</span>
+      </div>
+
+      <div class="fact">
+        <strong>1</strong>
+        <span>Star at the center</span>
+      </div>
+
+      <div class="fact">
+        <strong>4.6B</strong>
+        <span>Approx. age of Solar System</span>
+      </div>
+
+      <div class="fact">
+        <strong>149.6M</strong>
+        <span>Earth-Sun distance in km</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+
+    <div class="footer-logo">
+      ☀ SolarVerse
+    </div>
+
+    <p>
+      An interactive Solar System experience created by
+      <strong>Anshuman Singh</strong>.
+    </p>
+
+    <p class="copyright">
+      © 2026 Anshuman Singh • Explore. Learn. Discover.
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+
